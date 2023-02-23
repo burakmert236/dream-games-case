@@ -1,7 +1,7 @@
 Dream Games Case Study
 ======================
 
-These are example requests nd responses for Row Match service running at [http://localhost:8080](http://localhost:8080)
+These are example requests and responses for Row Match service running at [http://localhost:8080](http://localhost:8080)
 
 USER API
 --------
