@@ -1,7 +1,9 @@
 Dream Games Case Study
 ======================
 
-These are example requests and responses for Row Match service running at [http://localhost:8080](http://localhost:8080)
+Application uses a MySQL database, related configurations for database connection is in the file with path "src/main/resources/application.properties".
+
+These are example requests and responses for Row Match service running at [http://localhost:8080](http://localhost:8080).
 
 USER API
 --------
