@@ -1,0 +1,123 @@
+= Dream Games Case Study
+
+These are example requests nd responses for Row Match service running at http://localhost:8080
+
+== USER API
+
+=== CreateUserRequest
+
+This endpoint creates a user with 5000 coins which starts from level 1.
+Created users by this endpoint have no team information.
+The endpoint returns unique id, level and coin information of the created user.
+
+.Request
+include::{snippets}/addUser/http-request.adoc[]
+
+.Response
+include::{snippets}/addUser/http-response.adoc[]
+
+=== UpdateLevelRequest
+
+This endpoints receives user id information as a path variable
+and updates related user. Level of the user will be increased by 1
+and coins of the user will increased by 25 as a level up reward.
+The endpoint returns unique id, level and coin information of the updated user.
+
+.Possible Errors:
+
+[cols="1,1", frame=ends]
+|===
+|*Status Code* |*Error Message*
+
+|[red]#404#
+|User Not Found
+|===
+
+.Request
+include::{snippets}/levelUpUser/http-request.adoc[]
+
+.Response
+include::{snippets}/levelUpUser/http-response.adoc[]
+
+
+
+== TEAM API
+
+=== CreateTeamRequest
+
+This endpoints receives user id and team name information by parsing request body.
+It creates a new team with given name and sets initial member count as 1.
+It also sets given user's team information and deduct coins of the user by 5000.
+
+.Possible Errors:
+
+[cols="1,1", frame=ends]
+|===
+|*Status Code* |*Error Message*
+
+|[red]#404#
+|User Not Found
+
+|[red]#403#
+|User has to have at least 1000 coins to create a team
+
+|[red]#403#
+|User is already a member of another team, leave your team before join to a new team
+|===
+
+.Request
+include::{snippets}/createTeam/http-request.adoc[]
+
+.Response
+include::{snippets}/createTeam/http-response.adoc[]
+
+=== JoinTeamRequest
+
+This endpoints receives team id information as path variable
+and user id information by parsing request body.
+It sets team information of given user
+and increase member count of given teams.
+
+.Possible Errors:
+
+[cols="1,1", frame=ends]
+|===
+|*Status Code* |*Error Message*
+
+|[red]#404#
+|User Not Found
+
+|[red]#404#
+|Team Not Found
+
+|[red]#403#
+|User has to have at least 1000 coins to create a team
+
+|[red]#403#
+|User is already a member of the requested team
+
+|[red]#403#
+|User is already a member of another team, leave your team before join to a new team
+
+|[red]#403#
+|Team is full
+|===
+
+.Request
+include::{snippets}/joinTeam/http-request.adoc[]
+
+.Response
+include::{snippets}/joinTeam/http-response.adoc[]
+
+=== GetTeams
+
+This endpoint returns random 10 teams which is not full.
+If there is no 10 available teams, it returns as many available teams as possible.
+It randomizes returned teams and their order for each request.
+
+.Request
+include::{snippets}/getAvailableTeams/http-request.adoc[]
+
+.Response
+include::{snippets}/getAvailableTeams/http-response.adoc[]
+
