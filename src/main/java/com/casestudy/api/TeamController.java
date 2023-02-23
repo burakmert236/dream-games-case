@@ -85,4 +85,10 @@ public class TeamController {
         return "Team is full!";
     }
 
+    @ExceptionHandler(TeamWithGivenNameAlreadyExists.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    private String handleTeamWithGivenNameAlreadyExistsException() {
+        return "Given team name is already taken!";
+    }
+
 }

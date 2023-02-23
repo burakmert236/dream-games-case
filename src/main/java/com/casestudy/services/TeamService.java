@@ -4,6 +4,7 @@ import com.casestudy.entities.Team;
 import com.casestudy.entities.User;
 import com.casestudy.exceptions.team.TeamIsFullException;
 import com.casestudy.exceptions.team.TeamNotFoundException;
+import com.casestudy.exceptions.team.TeamWithGivenNameAlreadyExists;
 import com.casestudy.exceptions.user.*;
 import com.casestudy.repos.TeamRepository;
 import com.casestudy.repos.UserRepository;
@@ -42,6 +43,12 @@ public class TeamService {
         // user has to have at least 1000 coins to create a team
         if (user.getCoin() < 1000) {
             throw new InsufficientCoinException();
+        }
+
+        Team currentTeam = teamRepository.findOneByName(teamName);
+
+        if(currentTeam != null) {
+            throw new TeamWithGivenNameAlreadyExists();
         }
 
         Team team = new Team(teamName);

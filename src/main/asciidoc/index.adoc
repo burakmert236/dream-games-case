@@ -63,6 +63,9 @@ It also sets given user's team information and deduct coins of the user by 5000.
 
 |[red]#403#
 |User is already a member of another team, leave your team before join to a new team
+
+|[red]#403#
+|Given team name is already taken
 |===
 
 .Request

@@ -86,10 +86,11 @@ This endpoints receives user id and team name information by parsing request bod
 *Possible Errors:*
 
 | **Status Code** | **Error Message** |
-| --- | --- |
-| 404 | User Not Found |
-| 403 | User has to have at least 1000 coins to create a team |
-| 403 | User is already a member of another team, leave your team before join to a new team |
+|-----------------| --- |
+| 404             | User Not Found |
+| 403             | User has to have at least 1000 coins to create a team |
+| 403             | User is already a member of another team, leave your team before join to a new team |
+| 403             | Given team name is already taken |
 
 <br>
 

@@ -8,4 +8,5 @@ import java.io.Serializable;
 
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Serializable> {
+    public Team findOneByName(String name);
 }
